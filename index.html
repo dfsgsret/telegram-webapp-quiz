@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Квиз в Telegram</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h1 { color: #333; }
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #0088cc;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #005f7f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Простой квиз</h1>
+  <p>Выберите правильный ответ:</p>
+  <button id="answer1">Ответ 1</button>
+  <button id="answer2">Ответ 2</button>
+  <button id="answer3">Ответ 3</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const sendAnswer = (answer) => {
+      tg.sendData(answer);
+      alert(`Ваш ответ "${answer}" отправлен боту!`);
+    };
+
+    document.getElementById('answer1').onclick = () => sendAnswer('Ответ 1');
+    document.getElementById('answer2').onclick = () => sendAnswer('Ответ 2');
+    document.getElementById('answer3').onclick = () => sendAnswer('Ответ 3');
+  </script>
+</body>
+</html>
